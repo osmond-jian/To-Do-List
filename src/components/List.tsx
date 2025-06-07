@@ -1,4 +1,4 @@
-import ListItem from './listItem'
+import ListItem from './ListItem'
 
 interface ListProps {
     listItems: {
@@ -24,6 +24,7 @@ export default function List ({
         <div>
             {listItems.map((listObject) => (
                 <ListItem
+                    key={listObject.id}
                     listName={listObject.listName}
                     complete={listObject.complete}
                     editing={listObject.editing}
