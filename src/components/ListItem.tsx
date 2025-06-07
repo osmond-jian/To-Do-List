@@ -34,7 +34,7 @@ export default function ListItem({
             {editing ? (
                 <>
                     <input type='text' value={currentListName} onChange={editCurrentListName}/>
-                    <button onClick={() => editIndividualItem(listName)}>Save Changes</button>
+                    <button onClick={() => editIndividualItem(currentListName)}>Save Changes</button>
                 </>
 
                 ) : (
