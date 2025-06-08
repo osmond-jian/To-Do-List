@@ -11,6 +11,7 @@ export default function AddNewItemModal({
     //state to keep track of the list name input element value
     const [listItemName, setListItemName] = useState('');
 
+    //function to change local state when the submit button is pressed
     function editListName(element: React.ChangeEvent<HTMLInputElement>) {
         setListItemName(element.target.value)
     }

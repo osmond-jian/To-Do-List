@@ -8,9 +8,9 @@ interface ListProps {
         id:number;
     }[];
     setEditIndividualItem: (IndexToEdit:number) => void
-    editIndividualItem: (newListName:string) => void
-    deleteIndividualItem: (IndexToDelete:number) => void
-
+    editIndividualItem: (NewListName:string) => void
+    deleteIndividualItem: (IdToDelete:number) => void
+    toggleCheckBox:(IdToToggle:number) => void
 }
 
 // This is a list component, that will take in props of the entire list from state/localstorage, and map out all the ListItem components
@@ -19,6 +19,7 @@ export default function List ({
     setEditIndividualItem,
     editIndividualItem,
     deleteIndividualItem,
+    toggleCheckBox,
 }:ListProps) {
     return(
         <div>
@@ -32,6 +33,7 @@ export default function List ({
                     setEditIndividualItem={setEditIndividualItem}
                     editIndividualItem={editIndividualItem}
                     deleteIndividualItem={deleteIndividualItem}
+                    toggleCheckBox={toggleCheckBox}
                 />
             ))}
         </div>

@@ -2,9 +2,9 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import kpmLogo from './assets/kpmpowerLogo.png'
 import './App.css'
-import List from './components/List'
-import ConfirmDeleteAllModal from './components/ConfirmDeleteAllModal'
-import AddNewItemModal from './components/AddNewItemModal'
+import List from './components/List/List'
+import ConfirmDeleteAllModal from './components/ConfirmDeleteAllModal/ConfirmDeleteAllModal'
+import AddNewItemModal from './components/AddNewItemModal/AddNewItemModal'
 
 interface List {
   name: string;
@@ -20,7 +20,7 @@ interface List {
 
 function App() {
   // state used to track the list, starts off empty
-  const [list, setList] = useState([{listName:'TeSt', complete:false, editing:false, id:0,}]);
+  const [list, setList] = useState([{listName:'Sample List Item 1', complete:false, editing:false, id:0,}]);
   //state used to track whether user is making a new item or not, will open the new item modal that allows user to input the list item name
   const [newItemModal, setNewItemModal] = useState(false);
   //state used to track whether user is deleting all items on list or not, will open a new item modal that asks users whether they want to delete all or not
@@ -80,9 +80,16 @@ function App() {
   }
 
   //function to delete an individual item on a list, will pass it down into the listItem component
-  function deleteIndividualItem (indexToDelete:number) {
+  function deleteIndividualItem (idToDelete:number) {
     setList(currentList =>
-      currentList.filter((_, currentIndex) => currentIndex !== indexToDelete)
+      currentList.filter(item => item.id !== idToDelete)
+    );
+  }
+
+  // function to check or uncheck the listItem's checkBox by toggling the .complete state with ! reversing the boolean; will pass down to listItem component
+  function toggleCheckBox (idToToggle:number) {
+    setList(currentList => 
+      currentList.map((item) => item.id === idToToggle ? {...item, complete: !item.complete}: item)
     );
   }
 
@@ -90,7 +97,7 @@ function App() {
     <>
       {/* Nav */}
       <div>
-        <a href="https://vite.dev" target="_blank">
+        <a href="https://www.kpmpower.com/" target="_blank">
           <img src={kpmLogo} className="logo" alt="Vite logo" />
         </a>
         <a href="https://react.dev" target="_blank">
@@ -108,10 +115,11 @@ function App() {
          setEditIndividualItem={setEditIndividualItem}
          editIndividualItem={editIndividualItem}
          deleteIndividualItem={deleteIndividualItem}
+         toggleCheckBox={toggleCheckBox}
          />
       </div>
 
-      {/* modals */}
+      {/* Modals */}
       {deleteAllWarning && <ConfirmDeleteAllModal deleteAllItems={deleteAllItems}/>}
       {newItemModal && <AddNewItemModal setNewItemState={setNewItemState}/>}
     </>
