@@ -26,5 +26,5 @@ Currently, the app is deployed on Netlify, which clones the github repo and auto
 
 **TO DO LIST:**
 1. think about more visual feedback from a UX perspective 
-2. bonus features? (websockets for live editing, backend server to track multiple users, docker for consistent deployment)
+2. bonus features? (websockets for live editing, backend server to track multiple users, docker for consistent deployment, having multiple lists and a dropdown to cycle through them)
 3. think about edge cases for unit tests
