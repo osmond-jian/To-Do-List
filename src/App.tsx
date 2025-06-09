@@ -29,6 +29,9 @@ function App() {
   const [newItemModal, setNewItemModal] = useState(false);
   //state used to track whether user is deleting all items on list or not, will open a new item modal that asks users whether they want to delete all or not
   const [deleteAllWarning, setDeleteAllWarning] = useState(false);
+  //state used for hamburger menu on mobile screens
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 
   //useEffect hook that will update local storage every single time the list state is updated
   useEffect(() => {
@@ -127,7 +130,13 @@ function App() {
   return (
     <>
       {/* Sidebar Navigation */}
-      <div className="sidebar-nav">
+      <button
+        className="mobile-menu-toggle"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        ☰
+      </button>
+      <div className={`sidebar-nav ${isMenuOpen ? 'open' : ''}`}>
         <div className="logo-section">
           <a href="https://www.kpmpower.com/" target="_blank">
             <img src={kpmLogo} className="logo" alt="KPM logo" />
