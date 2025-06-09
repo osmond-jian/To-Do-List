@@ -22,7 +22,17 @@ export default function AddNewItemModal({
             <div className="modal">
                 <h2>Please enter the name of the new item to be added to the list below.</h2>
                 <label htmlFor='listItemInput'>List Item Name</label>
-                <input id='listItemInput' type='text' value={listItemName} onChange={editListName} />
+                <input 
+                    id='listItemInput'
+                    type='text' 
+                    value={listItemName} 
+                    onChange={editListName}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            setNewItemState(listItemName);
+                        }
+                    }}
+                />
                 <div className="modal-actions">
                     <button onClick={() => setNewItemState(listItemName)}>Submit</button>
                     <button onClick={() => setNewItemState('')}>Cancel</button>

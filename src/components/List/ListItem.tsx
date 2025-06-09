@@ -35,7 +35,17 @@ export default function ListItem({
         <input type="checkbox" checked={complete} onChange={() => toggleCheckBox(id)} />
         {editing ? (
         <>
-            <input type="text" value={currentListName} onChange={editCurrentListName} />
+            <input 
+                type="text" 
+                value={currentListName} 
+                onChange={editCurrentListName}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        editIndividualItem(id, currentListName);
+                    }
+                }} 
+            />
             <button onClick={() => editIndividualItem(id, currentListName)}>Save 💾</button>
         </>
         ) : (
