@@ -6,7 +6,7 @@ export interface ListItemProps {
     editing:boolean;
     id:number;
     setEditIndividualItem: (IndexToEdit:number) => void
-    editIndividualItem: (NewListName:string) => void
+    editIndividualItem: (IdToEdit:number, NewListName:string) => void
     deleteIndividualItem: (IdToDelete:number) => void
     toggleCheckBox:(IdToToggle:number) => void
 }
@@ -37,11 +37,11 @@ export default function ListItem({
             {editing ? (
                 <>
                     <input type='text' value={currentListName} onChange={editCurrentListName}/>
-                    <button onClick={() => editIndividualItem(currentListName)}>Save Changes</button>
+                    <button onClick={() => editIndividualItem(id, currentListName)}>Save Changes</button>
                 </>
                 ) : (
                 <>
-                    <span>{listName}</span>
+                    <span style={{textDecoration : complete ? 'line-through' : 'none'}}>{listName}</span>
                     <button onClick={() => setEditIndividualItem(id)}>Edit</button>
                 </>
             )}

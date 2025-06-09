@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import kpmLogo from './assets/kpmpowerLogo.png'
 import './App.css'
@@ -6,27 +6,54 @@ import List from './components/List/List'
 import ConfirmDeleteAllModal from './components/ConfirmDeleteAllModal/ConfirmDeleteAllModal'
 import AddNewItemModal from './components/AddNewItemModal/AddNewItemModal'
 
-interface List {
-  name: string;
-  id: number;
-}
-
-
 // Core features: add item, edit item, remove item, done (checkmark)
 // structure: typescript/react, modular and maintainable/scalable
 // unit tests using vitest or jest? add, edit, remove item, validating rendered output of list
 // UI requirements: simple user-friendly interface, visual feedback when appropriate (when editing), add styling
 // bonus- store state in local storage or backend database
 
+interface ListItem {
+  listName:string;
+  complete:boolean;
+  editing:boolean;
+  id:number;
+}
+
+const localStorageKey = 'KPM-TASKS';
+
 function App() {
-  // state used to track the list, starts off empty
-  const [list, setList] = useState([{listName:'Sample List Item 1', complete:false, editing:false, id:0,}]);
+  // state used to track the list, starts off checking the local storage for old lists, otherwise adds a default list item
+  const [list, setList] = useState(loadListFromStorage);
   //state used to track whether user is making a new item or not, will open the new item modal that allows user to input the list item name
   const [newItemModal, setNewItemModal] = useState(false);
   //state used to track whether user is deleting all items on list or not, will open a new item modal that asks users whether they want to delete all or not
   const [deleteAllWarning, setDeleteAllWarning] = useState(false);
-  // state used to track whether user is editing an individual item or not; maybe use number index instead of boolean
-  const [indexToEdit, setIndexToEdit] = useState<number | null>(null);
+
+  //useEffect hook that will update local storage every single time the list state is updated
+  useEffect(() => {
+    localStorage.setItem(localStorageKey, JSON.stringify(list));
+  }, [list]);
+
+  //function to load list from storage safely (without causing type errors) by validating local storage before putting it into state
+  function loadListFromStorage(): ListItem[] {
+    const storedLists = localStorage.getItem(localStorageKey);
+    if (!storedLists) return [];
+
+    try {
+      const parsedStoredLists = JSON.parse(storedLists);
+      if (Array.isArray(parsedStoredLists) && parsedStoredLists.every(item =>
+        typeof item.listName === 'string' &&
+        typeof item.complete === 'boolean' &&
+        typeof item.editing === 'boolean' &&
+        typeof item.id === 'number' 
+      )) {
+        return parsedStoredLists
+      }
+  } catch (error) {
+    console.warn('Failed to grab list from local storage', error);
+  }
+  return [];
+}
 
   //function for the "add new item" button, sets newItem state to true which will trigger a modal to open to allow user to create a new List
   function addNewItem() {
@@ -60,23 +87,21 @@ function App() {
 
   //function to set editing an individual item to true by changing state and the list array, so the child listItem component can turn into the "editable" mode
   //toDO: add some kind of protection to prevent multiple edits; maybe turn indexToEdit to an array of numbers?
-  function setEditIndividualItem (indexToEdit:number) {
-    setIndexToEdit(indexToEdit);
+  function setEditIndividualItem (IdToEdit:number) {
     setList(currentList =>
       currentList.map((item, currentIndex) =>
-        currentIndex === indexToEdit ? {...item, editing:true} : item
+        currentIndex === IdToEdit ? {...item, editing:true} : item
       )
     );
   }
 
   //function to edit an individual item on a list from the list array, will pass it down into the listItem component
-  function editIndividualItem (newListName:string) {
+  function editIndividualItem (idToEdit:number, newListName:string) {
     setList(currentList =>
       currentList.map((item, currentIndex) =>
-        currentIndex === indexToEdit ? {...item, listName: newListName, editing:false} : item
+        currentIndex === idToEdit ? {...item, listName: newListName, editing:false} : item
       )
     );
-    setIndexToEdit(null);
   }
 
   //function to delete an individual item on a list, will pass it down into the listItem component
@@ -106,7 +131,7 @@ function App() {
       </div>
 
       {/* List Component */}
-      <h1>To Do List</h1>
+      <h1>KPM TASKS</h1>
       <button onClick={addNewItem}>+ Add New Item</button>
       <button onClick={confirmDeleteAllItems}>Clear All Items</button>
       <div className="card">

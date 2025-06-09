@@ -8,7 +8,7 @@ interface ListProps {
         id:number;
     }[];
     setEditIndividualItem: (IndexToEdit:number) => void
-    editIndividualItem: (NewListName:string) => void
+    editIndividualItem: (IdToEdit:number, NewListName:string) => void
     deleteIndividualItem: (IdToDelete:number) => void
     toggleCheckBox:(IdToToggle:number) => void
 }
