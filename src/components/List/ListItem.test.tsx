@@ -18,7 +18,7 @@ describe('ListItem', () => {
   it('renders item name and delete button', () => {
     render(<ListItem {...baseProps} />);
     expect(screen.getByText('Test Task')).toBeInTheDocument();
-    expect(screen.getByText('Delete')).toBeInTheDocument();
+    expect(screen.getByText('Delete 🗑️')).toBeInTheDocument();
   });
   
   it('calls toggleCheckBox when checkbox is clicked', () => {
@@ -29,7 +29,7 @@ describe('ListItem', () => {
 
   it('calls delete handler on Delete click', () => {
     render(<ListItem {...baseProps} />);
-    fireEvent.click(screen.getByText('Delete'));
+    fireEvent.click(screen.getByText('Delete 🗑️'));
     expect(baseProps.deleteIndividualItem).toHaveBeenCalledWith(1);
   });
 });

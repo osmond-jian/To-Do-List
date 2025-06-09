@@ -23,6 +23,7 @@ const baseProps = {
     editIndividualItem: vi.fn(),
     deleteIndividualItem: vi.fn(),
     toggleCheckBox:vi.fn(),
+    setListItems:vi.fn(),
 }
 
 //check to see if two listItems are rendered properly

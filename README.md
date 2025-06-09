@@ -1,4 +1,4 @@
-This is the **KPM TASKS** app for the KPM Power coding challenge 2025. It is a to-do-list built with React (Vite) and TypeScript. The app allows you to add, edit, delete, and mark list items. It also stores the list in local storage to persist between browser sessions. You can try it [here](kpm-tasks.netlify.app/). 
+This is the **KPM TASKS** app for the KPM Power coding challenge 2025. It is a to-do-list built with React (Vite) and TypeScript. The app allows you to add, edit, delete, and mark list items. It also stores the list in local storage to persist between browser sessions. The lists are also draggable to change the order easily, courtesy of @hello-pangea/dnd library. You can try it [here](kpm-tasks.netlify.app/). 
 
 **Steps to run locally:**
 1. Clone or Download the code on Github
@@ -26,5 +26,5 @@ Currently, the app is deployed on Netlify, which clones the github repo and auto
 
 **TO DO LIST:**
 1. think about more visual feedback from a UX perspective 
-2. bonus features? (draggable list elements, websockets for live editing, backend?)
+2. bonus features? (websockets for live editing, backend server to track multiple users, docker for consistent deployment)
 3. think about edge cases for unit tests
