@@ -8,6 +8,8 @@
   border-radius: 6px;
   transition: background-color 0.2s, border-color 0.2s;
   font-family: system-ui, sans-serif;
+  flex-wrap: wrap;
+  word-break: break-word;
 }
 
 .list-item:hover {
@@ -29,6 +31,8 @@
   flex: 1;
   font-size: 16px;
   color: #333;
+  overflow-wrap: break-word;
+  display:inline-block;
 }
 
 .list-item input[type="checkbox"] {
