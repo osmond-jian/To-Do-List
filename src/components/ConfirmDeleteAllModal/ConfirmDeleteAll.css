@@ -73,6 +73,7 @@
   margin-bottom: 1.5rem;
   transition: all 200ms ease;
   background: #fafafa;
+  color:black;
 }
 
 .modal input[type="text"]:focus {
