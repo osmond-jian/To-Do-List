@@ -12,6 +12,7 @@ import AddNewItemModal from './components/AddNewItemModal/AddNewItemModal'
 // UI requirements: simple user-friendly interface, visual feedback when appropriate (when editing), add styling
 // bonus- store state in local storage or backend database
 
+//type for a List Item (the list is rendered from an array of ListItems)
 interface ListItem {
   listName:string;
   complete:boolean;

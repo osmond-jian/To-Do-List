@@ -36,15 +36,15 @@ export default function ListItem({
         {editing ? (
         <>
             <input type="text" value={currentListName} onChange={editCurrentListName} />
-            <button onClick={() => editIndividualItem(id, currentListName)}>Save</button>
+            <button onClick={() => editIndividualItem(id, currentListName)}>Save 💾</button>
         </>
         ) : (
         <>
             <span style={{ textDecoration: complete ? 'line-through' : 'none' }}>{listName}</span>
-            <button onClick={() => setEditIndividualItem(id)}>Edit</button>
+            <button onClick={() => setEditIndividualItem(id)}>Edit ✏️</button>
         </>
         )}
-        <button onClick={() => deleteIndividualItem(id)}>Delete</button>
+        <button onClick={() => deleteIndividualItem(id)}>Delete 🗑️</button>
     </div>
     );
 }
