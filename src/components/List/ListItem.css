@@ -1,0 +1,62 @@
+/* ListItem.css */
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  padding: 10px 14px;
+  border-radius: 6px;
+  transition: background-color 0.2s, border-color 0.2s;
+  font-family: system-ui, sans-serif;
+}
+
+.list-item:hover {
+  background-color: #f0f0f0;
+  border-color: #bfbfbf;
+}
+
+.list-item input[type="text"] {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 15px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: #fdfdfd;
+  color: #333;
+}
+
+.list-item span {
+  flex: 1;
+  font-size: 16px;
+  color: #333;
+}
+
+.list-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+.list-item button {
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.list-item button:hover {
+  background-color: #d4d4d4;
+}
+
+.list-item button:last-child {
+  background-color: #f5c6cb;
+  color: #7a1c1c;
+}
+
+.list-item button:last-child:hover {
+  background-color: #e6a8ad;
+}

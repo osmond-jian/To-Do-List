@@ -22,7 +22,6 @@ npm run test || yarn run test
 
 
 **TO DO LIST:**
-1. make it look nice and responsive to different screen sizes, think about css libraries (tailwind is easiest, but maybe we can just keep it simple with createStylesheet?)
-2. think about more visual feedback from a UX perspective 
-3. bonus features? (draggable list elements, websockets for live editing, backend?)
-4. think about edge cases for unit tests
+1. think about more visual feedback from a UX perspective 
+2. bonus features? (draggable list elements, websockets for live editing, backend?)
+3. think about edge cases for unit tests

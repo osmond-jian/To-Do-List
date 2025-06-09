@@ -35,7 +35,7 @@ describe('App - full to-do list functionality', () => {
         const input = screen.getByDisplayValue(/sample list item 1/i);
 
         fireEvent.change(input, { target: { value: 'Edited Task' } });
-        fireEvent.click(screen.getByText('Save Changes'));
+        fireEvent.click(screen.getByText('Save'));
         expect(screen.getByText('Edited Task')).toBeInTheDocument();
     });
 

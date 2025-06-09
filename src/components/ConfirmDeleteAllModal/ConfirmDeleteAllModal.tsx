@@ -1,3 +1,5 @@
+import './ConfirmDeleteAll.css'
+
 export interface ConfirmDeleteAllModal {
     deleteAllItems: (confirmed:boolean) => void;
 }
@@ -7,11 +9,14 @@ export default function ConfirmDeleteAllModal({
     deleteAllItems
 }:ConfirmDeleteAllModal) {
     return (
-        <div>
-            <h2> Are you sure you want to delete everything? This will permanently erase the to-do-list. </h2>
-            {/* note that the onClicks has to be arrow functions because it needs a reference to a function, instead of directly calling a function */}
-            <button onClick={() => deleteAllItems(true)}>Confirm</button>
-            <button onClick={() => deleteAllItems(false)}>Cancel</button>
+        <div className="modal-overlay">
+            <div className="modal confirm-delete-modal">
+                <h2>Are you sure you want to delete everything? This will permanently erase the to-do-list.</h2>
+                <div className="modal-actions">
+                    <button className="confirm-btn" onClick={() => deleteAllItems(true)}>Confirm</button>
+                    <button className="cancel-btn" onClick={() => deleteAllItems(false)}>Cancel</button>
+                </div>
+            </div>
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './ListItem.css';
 
 export interface ListItemProps {
     listName: string;
@@ -29,23 +30,21 @@ export default function ListItem({
     function editCurrentListName(element: React.ChangeEvent<HTMLInputElement>) {
         setCurrentListName(element.target.value)
     }
-
     return (
-        <div>
-            <input type="checkbox" checked={complete} onChange={() => toggleCheckBox(id)}/>
-            {/* Editing / Non-editing Modes */}
-            {editing ? (
-                <>
-                    <input type='text' value={currentListName} onChange={editCurrentListName}/>
-                    <button onClick={() => editIndividualItem(id, currentListName)}>Save Changes</button>
-                </>
-                ) : (
-                <>
-                    <span style={{textDecoration : complete ? 'line-through' : 'none'}}>{listName}</span>
-                    <button onClick={() => setEditIndividualItem(id)}>Edit</button>
-                </>
-            )}
-            <button onClick={() => deleteIndividualItem(id)}>Delete</button>
-        </div>
-    )
+    <div className="list-item">
+        <input type="checkbox" checked={complete} onChange={() => toggleCheckBox(id)} />
+        {editing ? (
+        <>
+            <input type="text" value={currentListName} onChange={editCurrentListName} />
+            <button onClick={() => editIndividualItem(id, currentListName)}>Save</button>
+        </>
+        ) : (
+        <>
+            <span style={{ textDecoration: complete ? 'line-through' : 'none' }}>{listName}</span>
+            <button onClick={() => setEditIndividualItem(id)}>Edit</button>
+        </>
+        )}
+        <button onClick={() => deleteIndividualItem(id)}>Delete</button>
+    </div>
+    );
 }

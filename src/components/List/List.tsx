@@ -1,4 +1,5 @@
 import ListItem from './ListItem'
+import './List.css';
 
 interface ListProps {
     listItems: {
@@ -21,21 +22,21 @@ export default function List ({
     deleteIndividualItem,
     toggleCheckBox,
 }:ListProps) {
-    return(
-        <div>
-            {listItems.map((listObject) => (
-                <ListItem
-                    key={listObject.id}
-                    listName={listObject.listName}
-                    complete={listObject.complete}
-                    editing={listObject.editing}
-                    id={listObject.id}
-                    setEditIndividualItem={setEditIndividualItem}
-                    editIndividualItem={editIndividualItem}
-                    deleteIndividualItem={deleteIndividualItem}
-                    toggleCheckBox={toggleCheckBox}
-                />
-            ))}
-        </div>
-    )
+    return (
+    <div className="list-container">
+        {listItems.map((listObject) => (
+        <ListItem
+            key={listObject.id}
+            listName={listObject.listName}
+            complete={listObject.complete}
+            editing={listObject.editing}
+            id={listObject.id}
+            setEditIndividualItem={setEditIndividualItem}
+            editIndividualItem={editIndividualItem}
+            deleteIndividualItem={deleteIndividualItem}
+            toggleCheckBox={toggleCheckBox}
+        />
+        ))}
+    </div>
+    );
 }

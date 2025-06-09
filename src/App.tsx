@@ -120,28 +120,36 @@ function App() {
 
   return (
     <>
-      {/* Nav */}
-      <div>
-        <a href="https://www.kpmpower.com/" target="_blank">
-          <img src={kpmLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      {/* Sidebar Navigation */}
+      <div className="sidebar-nav">
+        <div className="logo-section">
+          <a href="https://www.kpmpower.com/" target="_blank">
+            <img src={kpmLogo} className="logo" alt="KPM logo" />
+          </a>
+          <a href="https://react.dev" target="_blank">
+            <img src={reactLogo} className="logo react" alt="React logo" />
+          </a>
+        </div>
+        
+        <div className="nav-actions">
+          <h3>Actions</h3>
+          <button onClick={addNewItem}>+ Add New Item</button>
+          <button onClick={confirmDeleteAllItems}>Clear All Items</button>
+        </div>
       </div>
 
-      {/* List Component */}
-      <h1>KPM TASKS</h1>
-      <button onClick={addNewItem}>+ Add New Item</button>
-      <button onClick={confirmDeleteAllItems}>Clear All Items</button>
-      <div className="card">
-        <List
-         listItems={list}
-         setEditIndividualItem={setEditIndividualItem}
-         editIndividualItem={editIndividualItem}
-         deleteIndividualItem={deleteIndividualItem}
-         toggleCheckBox={toggleCheckBox}
-         />
+      {/* Main Content */}
+      <div className="main-content">
+        <h1>KPM TASKS</h1>
+        <div className="card">
+          <List
+            listItems={list}
+            setEditIndividualItem={setEditIndividualItem}
+            editIndividualItem={editIndividualItem}
+            deleteIndividualItem={deleteIndividualItem}
+            toggleCheckBox={toggleCheckBox}
+          />
+        </div>
       </div>
 
       {/* Modals */}
