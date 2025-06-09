@@ -13,7 +13,7 @@ import AddNewItemModal from './components/AddNewItemModal/AddNewItemModal'
 // bonus- store state in local storage or backend database
 
 //type for a List Item (the list is rendered from an array of ListItems)
-interface ListItem {
+export interface ListItem {
   listName:string;
   complete:boolean;
   editing:boolean;
@@ -50,11 +50,16 @@ function App() {
       )) {
         return parsedStoredLists
       }
-  } catch (error) {
-    console.warn('Failed to grab list from local storage', error);
+    } catch (error) {
+      console.warn('Failed to grab list from local storage', error);
+    }
+    return [];
   }
-  return [];
-}
+
+  //function to change the list state for child components (for draggable list elements)
+  function setListItems(newList: ListItem[]) {
+    setList(newList);
+  }
 
   //function for the "add new item" button, sets newItem state to true which will trigger a modal to open to allow user to create a new List
   function addNewItem() {
@@ -149,6 +154,7 @@ function App() {
             editIndividualItem={editIndividualItem}
             deleteIndividualItem={deleteIndividualItem}
             toggleCheckBox={toggleCheckBox}
+            setListItems={setListItems}
           />
         </div>
       </div>

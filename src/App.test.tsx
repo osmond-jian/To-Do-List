@@ -31,11 +31,11 @@ describe('App - full to-do list functionality', () => {
 
     it('edits an item name', async () => {
         render(<App />);
-        fireEvent.click(screen.getByText('Edit'));
+        fireEvent.click(screen.getByText('Edit ✏️'));
         const input = screen.getByDisplayValue(/sample list item 1/i);
 
         fireEvent.change(input, { target: { value: 'Edited Task' } });
-        fireEvent.click(screen.getByText('Save'));
+        fireEvent.click(screen.getByText('Save 💾'));
         expect(screen.getByText('Edited Task')).toBeInTheDocument();
     });
 
@@ -48,7 +48,7 @@ describe('App - full to-do list functionality', () => {
     });
         it('deletes an item', () => {
         render(<App />);
-        fireEvent.click(screen.getByText('Delete'));
+        fireEvent.click(screen.getByText('Delete 🗑️'));
         expect(screen.queryByText('Sample List Item 1')).not.toBeInTheDocument();
     });
 
