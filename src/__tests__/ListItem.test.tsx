@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import ListItem from '../components/List/ListItem';
 import { expect, describe, it, vi } from 'vitest';
 
+//this was the first test file I wrote and I just left it in here. I wanted to add edge cases here in the future that go beyond basic functionality of each component
 describe('ListItem', () => {
   it('renders the task name and checkbox', () => {
     render(
@@ -38,7 +39,7 @@ describe('ListItem', () => {
       />
     );
 
-    fireEvent.click(screen.getByText('Delete'));
+    fireEvent.click(screen.getByText('Delete 🗑️'));
     expect(mockDelete).toHaveBeenCalledWith(99);
   });
 });
