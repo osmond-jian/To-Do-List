@@ -19,8 +19,8 @@ export default function AddNewItemModal({
     return (
         <div>
             <h2> Please enter the name of the new item to be added to the list below. </h2>
-            <label>List Item Name</label>
-            <input type='text' value={listItemName} onChange={editListName} />
+            <label htmlFor='listItemInput'>List Item Name</label>
+            <input id='listItemInput' type='text' value={listItemName} onChange={editListName} />
             {/* note that the onClicks has to be arrow functions because it needs a reference to a function, instead of directly calling a function */}
             <button onClick={() => setNewItemState(listItemName)}>Submit</button>
             <button onClick={() => setNewItemState('')}>Cancel</button>
