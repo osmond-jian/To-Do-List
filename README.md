@@ -20,7 +20,8 @@ To run the unit tests (the test file is in the same level as each component), af
 npm run test || yarn run test
 ```
 
-**Deploying the App**
+**Deploying the App:**
+
 Currently, the app is deployed on Netlify, which clones the github repo and auto updates. The build command is "npm run build" and the publish directory is "/dist". Due to the small size of the app, there is no .yaml file yet, but it may be implemented in the future.
 
 
